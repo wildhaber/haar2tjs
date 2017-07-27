@@ -1,0 +1,27 @@
+{
+  "name": "haar2tjs",
+  "version": "0.0.1",
+  "description": "Haar to tracking.js object tracking classifier converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildhaber/haar2tjs.git"
+  },
+  "keywords": [
+    "haar",
+    "tracking.js",
+    "object",
+    "tracking",
+    "classifier",
+    "converter"
+  ],
+  "author": "Raphael Wildhaber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wildhaber/haar2tjs/issues"
+  },
+  "homepage": "https://github.com/wildhaber/haar2tjs#readme"
+}
