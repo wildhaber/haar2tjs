@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/wildhaber/haar2tjs/issues"
   },
-  "homepage": "https://github.com/wildhaber/haar2tjs#readme"
+  "homepage": "https://github.com/wildhaber/haar2tjs#readme",
+  "dependencies": {
+    "xml-stream": "^0.4.5"
+  }
 }
