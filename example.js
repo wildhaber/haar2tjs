@@ -1,4 +1,4 @@
-const TJSConverter = require(`./tjs.converter`);
+const TJSConverter = require(`./index`);
 
 const input = `./examples/eye.classifier.xml`;
 const output = `./examples/eye.classifier.js`;
@@ -14,4 +14,8 @@ eyeToTjs
     .saveAsVJ(`eye`, output)
     .then((result) => {
         console.log(result);
+    })
+    .catch((err) => {
+        console.log(`Some error happen.`);
+        console.log(err);
     });

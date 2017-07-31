@@ -84,7 +84,6 @@ ${docblocks.join(`\n`)}
 
                     let vjClassifierString = `${docblock}tracking.ViolaJones.classifiers.${classifier} = new Float64Array(${JSON.stringify(converted)});`;
 
-                    console.log(vjClassifierString);
                     fs.writeFile(filepath, vjClassifierString, (err) => {
                         if(err) {
                             reject(err);
@@ -93,7 +92,6 @@ ${docblocks.join(`\n`)}
                         }
                     });
 
-                    resolve(result);
                 })
                 .catch((err) => {
                     reject(err);
