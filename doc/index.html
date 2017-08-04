@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="TJSConverter.html">TJSConverter</a><ul class='methods'><li data-type='method'><a href="TJSConverter.html#convert">convert</a></li><li data-type='method'><a href="TJSConverter.html#getDocblock">getDocblock</a></li><li data-type='method'><a href="TJSConverter.html#saveAsVJ">saveAsVJ</a></li><li data-type='method'><a href="TJSConverter.html#setAuthor">setAuthor</a></li><li data-type='method'><a href="TJSConverter.html#setDescription">setDescription</a></li><li data-type='method'><a href="TJSConverter.html#setLicense">setLicense</a></li><li data-type='method'><a href="TJSConverter.html#setLink">setLink</a></li><li data-type='method'><a href="TJSConverter.html#setVersion">setVersion</a></li><li data-type='method'><a href="TJSConverter.html#toTjs">toTjs</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>haar2tjs</h1><p>Haar classifiers converter to <a href="https://github.com/eduardolundgren/tracking.js">tracking.js</a> classifiers for object tracking.</p>
+<h2>Installation</h2><pre class="prettyprint source lang-shell"><code>npm install haar2tjs --save-dev</code></pre><h2>Usage &amp; Example</h2><p><strong>./example/eye.classifier.xml</strong></p>
+<pre class="prettyprint source lang-xml"><code>&lt;?xml version=&quot;1.0&quot;?>
+&lt;opencv_storage>
+    &lt;cascade type_id=&quot;opencv-cascade-classifier&quot;>
+        &lt;stageType>BOOST&lt;/stageType>
+        &lt;featureType>HAAR&lt;/featureType>
+        &lt;height>20&lt;/height>
+        &lt;width>20&lt;/width>
+        &lt;stageParams>
+            &lt;maxWeakCount>1&lt;/maxWeakCount>
+        &lt;/stageParams>
+        &lt;featureParams>
+            &lt;maxCatCount>0&lt;/maxCatCount>
+        &lt;/featureParams>
+        &lt;stageNum>1&lt;/stageNum>
+        &lt;stages>
+            &lt;_>
+                &lt;maxWeakCount>1&lt;/maxWeakCount>
+                &lt;stageThreshold>-1.4562760591506958e+00&lt;/stageThreshold>
+                &lt;weakClassifiers>
+                    &lt;_>
+                        &lt;internalNodes>0 -1 0 1.2963959574699402e-01&lt;/internalNodes>
+                        &lt;leafValues>-7.7304208278656006e-01 6.8350148200988770e-01&lt;/leafValues>
+                    &lt;/_>
+                &lt;/weakClassifiers>
+            &lt;/_>
+        &lt;/stages>
+        &lt;features>
+            &lt;_>
+                &lt;rects>
+                    &lt;_>0 8 20 12 -1.&lt;/_>
+                    &lt;_>0 14 20 6 2.&lt;/_>
+                &lt;/rects>
+                &lt;tilted>1&lt;/tilted>
+            &lt;/_>
+        &lt;/features>
+    &lt;/cascade>
+&lt;/opencv_storage></code></pre><p>Convert Script Example:</p>
+<pre class="prettyprint source lang-javascript"><code>const Haar2tjs = require(`haar2tjs`);
+
+const input = `./examples/eye.classifier.xml`;
+const output = `./examples/eye.classifier.js`;
+
+const eyeToTjs = new Haar2tjs(input);
+
+eyeToTjs
+    // Optional definition for Docblock-Comments
+    .setDescription(`Example VJ Classifier for eyes`)
+    .setAuthor(`Eduardo Lundgren`, `edu@rdo.io`)
+    .setVersion(`v1.0.0`)
+    .setLink(`https://trackingjs.com`)
+    .setLicense(`BSD`)
+
+    // Save as Viola Jones classifier
+    .saveAsVJ(`eye`, output)
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((err) => {
+        console.log(`Ooops, an error happens...`);
+        console.log(err);
+    });</code></pre><p>Output:</p>
+<p><em>*./example/eye.classifier.js</em></p>
+<pre class="prettyprint source lang-javascript"><code>/**
+* Example VJ Classifier for eyes
+* @author Eduardo Lundgren &lt;edu@rdo.io>
+* @version v1.0.0
+* @link https://trackingjs.com
+* @license BSD
+*/
+tracking.ViolaJones.classifiers.eye = new Float64Array([20,20,-1.4562760591506958,1,1,2,0,8,20,12,-1,0,14,20,6,2,0.12963959574699402,-0.7730420827865601,0.6835014820098877]);</code></pre><h2>Credits</h2><p>Large parts used from Ciro S. Costa's <a href="https://github.com/cirocosta/gulp-converter-tjs">gulp-converter-tjs</a> (<a href="https://github.com/cirocosta/gulp-converter-tjs/blob/master/LICENSE">License</a>).</p>
+<h2>License</h2><pre class="prettyprint source"><code>MIT License
+
+Copyright (c) 2017 Raphael Wildhaber
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 04 2017 18:07:16 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
