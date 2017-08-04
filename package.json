@@ -1,12 +1,11 @@
 {
   "name": "haar2tjs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Haar to tracking.js object tracking classifier converter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "jsdoc -c ./jsdoc.conf.json",
-    "doc:help": "jsdoc --help"
+    "doc": "jsdoc -c ./jsdoc.conf.json"
   },
   "repository": {
     "type": "git",
