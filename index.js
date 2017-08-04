@@ -1,2 +1,2 @@
-const TJSConverter = require(`./tjs.converter`);
+const TJSConverter = require(`./src/tjs.converter`);
 module.exports = TJSConverter;

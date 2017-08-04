@@ -1,8 +1,15 @@
 const fs = require(`fs`);
 const XmlStream = require(`xml-stream`);
 
+/**
+ * Class representing a classifier converter
+ */
 class TJSConverter {
 
+    /**
+     * Create a converter
+     * @param {string} cascadeXmlPath - relative path to xml file
+     */
     constructor(cascadeXmlPath) {
         this._cascadeXmlStream = fs.createReadStream(cascadeXmlPath);
 
@@ -14,31 +21,61 @@ class TJSConverter {
 
     }
 
+    /**
+     * set jsdoc description
+     * @param {string} description
+     * @returns {TJSConverter}
+     */
     setDescription(description) {
         this._description = description;
         return this;
     }
 
+    /**
+     * set jsdoc author
+     * @param {string} author
+     * @param {string} email
+     * @returns {TJSConverter}
+     */
     setAuthor(author, email = null) {
         this._author = `${author} ${((email) ? '<' + email + '>' : '')}`;
         return this;
     }
 
+    /**
+     * set jsdoc version
+     * @param {string} version
+     * @returns {TJSConverter}
+     */
     setVersion(version) {
         this._version = version;
         return this;
     }
 
+    /**
+     * set jsdoc link
+     * @param {string} link - URL
+     * @returns {TJSConverter}
+     */
     setLink(link) {
         this._link = link;
         return this;
     }
 
+    /**
+     * set jsdoc license
+     * @param {string} license
+     * @returns {TJSConverter}
+     */
     setLicense(license) {
         this._license = license;
         return this;
     }
 
+    /**
+     * get defined jsdoc comment
+     * @returns {string}
+     */
     getDocblock() {
         let docblocks = [];
 
@@ -75,6 +112,12 @@ ${docblocks.join(`\n`)}
 
     }
 
+    /**
+     * convert and saves classifier as tracking.js-ViolaJones js file
+     * @param {string} classifier - tracking.ViolaJones.classifiers.${classifier}
+     * @param {string} filepath - relative path for export
+     * @returns {Promise}
+     */
     saveAsVJ(classifier, filepath) {
         return new Promise((resolve, reject) => {
 
@@ -100,6 +143,11 @@ ${docblocks.join(`\n`)}
         });
     }
 
+    /**
+     * converter to tracking.js VJ
+     * @param {object} orig
+     * @returns {Array}
+     */
     toTjs(orig) {
 
         let results = [];
@@ -143,6 +191,10 @@ ${docblocks.join(`\n`)}
         return results;
     }
 
+    /**
+     * convert xml to classifier
+     * @returns {Promise}
+     */
     convert() {
 
         return new Promise((resolve, reject) => {
