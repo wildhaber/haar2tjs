@@ -81,7 +81,7 @@ eyeToTjs
 
 Output:
 
-**./example/eye.classifier.js*
+**./example/eye.classifier.js**
 
 ```javascript
 /**
