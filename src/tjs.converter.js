@@ -315,7 +315,7 @@ ${docblocks.join(`\n`)}
 
             xml.on('end', () => {
                 if (g !== f) {
-                    return reject(new Error('Number of rects does not mach number of Nodes'));
+                    console.log('Warning: Number of rects does not mach number of Nodes');
                 }
 
                 resolve(this.toTjs(haarStruct));
